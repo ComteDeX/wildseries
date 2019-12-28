@@ -5,7 +5,7 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository", inversedBy="programs")
+ * @ORM\Entity(repositoryClass="App\Repository\ProgramRepository")
  */
 class Program
 {
@@ -32,7 +32,7 @@ class Program
     private $poster;
 
     /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\Category")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Category", inversedBy="programs")
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
