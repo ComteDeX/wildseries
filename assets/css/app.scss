@@ -1,0 +1,22 @@
+// assets/css/app.scss
+// assets/css/global.scss
+$primary : #0D99CE;
+$secondary: #FF8806;
+
+// the ~ allows you to reference things in node_modules
+@import "../../node_modules/bootstrap/scss/bootstrap";
+
+// customize some Bootstrap variables
+$theme-colors: (
+        "primary": $primary,
+        "secondary": $secondary
+);
+
+body {
+    background-color: get($theme-colors, "primary");
+}
+
+
+.thumbnail {
+    height: 150px;
+}
