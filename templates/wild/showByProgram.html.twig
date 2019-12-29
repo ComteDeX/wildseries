@@ -3,12 +3,14 @@
 
 {% block body %}
 
-<div class="media">
-    <img class="align-self-start mr-3" src="{{program.poster}}" alt="{{ program.title }} poster" height="150px">
+<div class="container justify-content-center">
+    <h1 class="col-12 text-center">{{ program.title }}</h1>
+    <div class="justify-content-start row">
+        <img class="align-self-start mr-3 thumbnail" src="{{program.poster}}" alt="{{ program.title }} poster">
     <div class="media-body">
         <h1 class="mt-0">{{ program.title }}</h1>
-        <p>{{ program.summary }}</p>
         <p>Categorie : <a href="{{ path('wild_showByCategory', {'categoryName' : program.category.name } ) }}">{{ program.category.name }}</a></p>
+        <p>{{ program.summary }}</p>
         {% for season in program.seasons %}
             <div>
                 <a href="{{ path('wild_showBySeason', {'id' : season.id}) }}">

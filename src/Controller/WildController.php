@@ -30,10 +30,14 @@ class WildController extends AbstractController
                 'No program found in program\'s table.'
             );
         }
+        $slugs = SlugifyService::multiSlugify($programs);
 
         return $this->render(
             'wild/index.html.twig',
-            ['programs' => $programs]
+            [
+                'programs' => $programs,
+                'slugs' => $slugs,
+            ]
         );
     }
 
