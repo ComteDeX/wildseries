@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ program.title }}{% endblock %}
+
+{% block body %}
+{#{{ dump(season.program.title) }}#}
+<div class="media">
+    <img class="align-self-start mr-3" src="{{ season.program.poster}}" alt="{{ season.program.title }} poster" height="150px">
+    <div class="media-body">
+        <h1 class="mt-0">{{ season.program.title }}</h1>
+        <p>Categorie : <a href="{{ path('wild_showByCategory', {'categoryName' : season.program.category.name } ) }}">{{ season.program.category.name }}</a></p>
+        <h2 class="mt-0">{{ season.year }} - {{ season.description }}</h2>
+        {% for episode in season.episodes %}
+            <div>
+{#                <a href="{{ path('wild_showBySeason', {'id' : season.id}) }}">#}
+                <h3>S{{ season.number }}E{{ episode.number }} - {{ episode.title }}</h3>
+{#                </a>#}
+                <p>{{ episode.sysnopsis }}</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+    <a href="{{ path('wild_index') }}">
+        Retour à l'accueil
+    </a>
+
+{% endblock %}
