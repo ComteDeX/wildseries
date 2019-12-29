@@ -100,9 +100,12 @@ class WildController extends AbstractController
                 3
             );
 
+        $slugs = SlugifyService::multiSlugify($programs);
+
         return $this->render('wild/showByCategory.html.twig', [
             'category' => $categoryName,
             'programs' => $programs,
+            'slugs' => $slugs,
         ]);
     }
 
