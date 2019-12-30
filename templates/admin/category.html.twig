@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Catégories{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="form-group">
+    {{ form_start(form) }}
+    {{ form_row(form.name) }}
+            <button type="submit" name="btnSearch">Rechercher</button>
+    {{ form_end(form) }}
+        </div>
+        <div class="tab-content">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>name</th>
+            </tr>
+    {% for category in categories %}
+        <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+        </tr>
+    {% endfor %}
+        </table>
+        </div>
+    </div>
+{% endblock %}

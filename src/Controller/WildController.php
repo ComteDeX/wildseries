@@ -22,6 +22,7 @@ class WildController extends AbstractController
      */
     public function index(): Response
     {
+
         $programs = $this->getDoctrine()
             ->getRepository(Program::class)
             ->findAll();
