@@ -9915,4 +9915,16 @@ a:hover {
   border-radius: 10px;
 }
 
+.smthumbnail {
+  height: 150px;
+  border-radius: 5px;
+}
+
+.btnlnk {
+  color: white;
+}
+.btnlnk:hover {
+  color: white;
+}
+
 /*# sourceMappingURL=app.css.map */

@@ -53,3 +53,15 @@ a {
     height: 300px;
     border-radius: 10px;
 }
+
+.smthumbnail {
+    height: 150px;
+    border-radius: 5px;
+}
+
+.btnlnk {
+    color: white;
+    &:hover {
+        color: white;
+    }
+}

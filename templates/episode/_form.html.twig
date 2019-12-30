@@ -1,0 +1,13 @@
+{{ form_start(form) }}
+    {{ form_label(form.title, 'Titre') }}
+    {{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.number, 'Numéro') }}
+    {{ form_widget(form.number, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.sysnopsis, 'Synopsis') }}
+    {{ form_widget(form.sysnopsis, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.season, 'Saison') }}
+    {{ form_widget(form.season, { 'attr': {'class': 'form-control'} }) }}
+    <div class="text-center mt-2">
+        <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+    </div>
+{{ form_end(form) }}

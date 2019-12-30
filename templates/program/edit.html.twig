@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Éditer Série{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Éditer Série</h1>
+        {{ include('program/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+
+        <div class="text-center">
+            {{ include('program/_delete_form.html.twig') }}
+        </div>
+        <div class="text-center mt-2">
+            <a href="{{ path('program_index') }}">Retour à la liste</a>
+        </div>
+    </div>
+{% endblock %}
