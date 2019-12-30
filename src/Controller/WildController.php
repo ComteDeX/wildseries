@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Actor;
 use App\Entity\Category;
 use App\Entity\Episode;
 use App\Entity\Program;
@@ -51,14 +52,14 @@ class WildController extends AbstractController
      *  )
      * @return Response
      */
-    public function show(?string $slug):Response
+    public function show(?string $slug): Response
     {
         if (!$slug) {
             throw $this
                 ->createNotFoundException('No slug has been sent to find a program in program\'s table.');
         }
         if ($slug == null) {
-            $slug =  "Aucune série sélectionnée, veuillez choisir une série";
+            $slug = "Aucune série sélectionnée, veuillez choisir une série";
         } else {
             $slug = SlugifyService::unslugify($slug);
         }
@@ -67,13 +68,13 @@ class WildController extends AbstractController
             ->findOneBy(['title' => mb_strtolower($slug)]);
         if (!$program) {
             throw $this->createNotFoundException(
-                'No program with '.$slug.' title, found in program\'s table.'
+                'No program with ' . $slug . ' title, found in program\'s table.'
             );
         }
 
         return $this->render('wild/show.html.twig', [
             'program' => $program,
-            'slug'  => $slug,
+            'slug' => $slug,
         ]);
     }
 
@@ -85,14 +86,14 @@ class WildController extends AbstractController
      *  )
      * @return Response
      */
-    public function showByCategory(?string $categoryName):Response
+    public function showByCategory(?string $categoryName): Response
     {
         $category = $this->getDoctrine()
             ->getRepository(Category::class)
             ->findOneBy(['name' => strtolower($categoryName)]);
         if (!$category) {
             throw $this->createNotFoundException(
-                'No category with '.$categoryName.' name, found in category\'s table.'
+                'No category with ' . $categoryName . ' name, found in category\'s table.'
             );
         }
         $programs = $this->getDoctrine()
@@ -119,14 +120,14 @@ class WildController extends AbstractController
      *  )
      * @return Response
      */
-    public function showByProgram(?string $slug):Response
+    public function showByProgram(?string $slug): Response
     {
         if (!$slug) {
             throw $this
                 ->createNotFoundException('No slug has been sent to find a program in program\'s table.');
         }
         if ($slug == null) {
-            $slug =  "Aucune série sélectionnée, veuillez choisir une série";
+            $slug = "Aucune série sélectionnée, veuillez choisir une série";
         } else {
             $slug = SlugifyService::unslugify($slug);
         }
@@ -135,7 +136,7 @@ class WildController extends AbstractController
             ->findOneBy(['title' => mb_strtolower($slug)]);
         if (!$program) {
             throw $this->createNotFoundException(
-                'No program with '.$slug.' title, found in program\'s table.'
+                'No program with ' . $slug . ' title, found in program\'s table.'
             );
         }
         return $this->render('wild/showByProgram.html.twig',
@@ -153,7 +154,7 @@ class WildController extends AbstractController
      *  )
      * @return Response
      */
-    public function showBySeason(int $id):Response
+    public function showBySeason(int $id): Response
     {
         if (!$id) {
             throw $this
@@ -165,7 +166,7 @@ class WildController extends AbstractController
             ->find($id);
         if (!$season) {
             throw $this->createNotFoundException(
-                'No season with '.$id.' number, found in season\'s table.'
+                'No season with ' . $id . ' number, found in season\'s table.'
             );
         }
 
@@ -183,7 +184,7 @@ class WildController extends AbstractController
      * @param integer $id
      * @Route("/showEpisode/{id<\d+>}", name="showEpisode")
      */
-    public function showEpisode(Episode $episode):Response
+    public function showEpisode(Episode $episode): Response
     {
         $season = $episode->getSeason();
         $program = $season->getProgram();
@@ -191,11 +192,11 @@ class WildController extends AbstractController
         $slug = SlugifyService::slugify($program->getTitle());
 
         return $this->render('wild/showEpisode.html.twig',
-        [
-            'episode' => $episode,
-            'program' => $program,
-            'season' => $season,
-            'slug' => $slug,
-        ]);
+            [
+                'episode' => $episode,
+                'program' => $program,
+                'season' => $season,
+                'slug' => $slug,
+            ]);
     }
 }

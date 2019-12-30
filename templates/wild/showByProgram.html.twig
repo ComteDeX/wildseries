@@ -10,6 +10,8 @@
     <div class="media-body">
         <p>Categorie : <a href="{{ path('wild_showByCategory', {'categoryName' : program.category.name } ) }}">{{ program.category.name }}</a></p>
         <p>{{ program.summary }}</p>
+        <div class="row col-12 justify-content-around">
+            <div class="col-5">
         {% for season in program.seasons %}
             <div>
                 <a href="{{ path('wild_showBySeason', {'id' : season.id}) }}">
@@ -17,6 +19,17 @@
                 </a>
             </div>
         {% endfor %}
+            </div>
+            <div class="col-5 offset-1">
+                Acteurs :
+                {% for actor in program.actors %}
+                    <div>
+                        <a href="{{ path('actor_show', {'id' : actor.id}) }}">
+                            {{ actor.name }}
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
     </div>
     <div class="col-12 text-center">
         <a href="{{ path('wild_index') }}">

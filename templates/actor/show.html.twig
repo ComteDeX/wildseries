@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Actor{% endblock %}
+
+{% block body %}
+<div class="container">
+<h1>{{ actor.name }}</h1>
+    <h4>Joue dans :</h4>
+    <div class="row">
+   {% for program in actor.programs %}
+        <div class="card col-2">
+            <a href="{{ path('program_show', {'id': program.id}) }}">
+                <img src="{{ program.poster }}" class="card-img-top">
+            </a>
+            <div class="card-body">
+            <h5 class="card-title">{{ program.title }}</h5>
+            <a href="{{ path('program_show', {'id': program.id}) }}" class="btn btn-primary">Plus d’infos</a>
+            </div>
+        </div>
+    {% else %}
+            <p colspan="5">Aucune série pour cet acteur</p>
+    {% endfor %}
+    </div>
+
+    <a href="{{ path('actor_edit', {'id': actor.id}) }}" class="btn btn-secondary">edit</a>
+
+    {{ include('actor/_delete_form.html.twig') }}
+    <a href="{{ path('actor_index') }}">Retour à la liste des acteurs</a>
+</div>
+{% endblock %}

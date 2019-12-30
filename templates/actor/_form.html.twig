@@ -1,0 +1,9 @@
+{{ form_start(form) }}
+    {{ form_label(form.name, 'Nom') }}
+    {{ form_widget(form.name, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.programs, 'Séries') }}
+    {{ form_widget(form.programs, { 'attr': {'class': 'form-control'} }) }}
+<div class="text-center mt-2">
+    <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
+</div>
+{{ form_end(form) }}
