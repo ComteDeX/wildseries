@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Category;
+use App\Entity\Episode;
 use App\Entity\Program;
 use App\Entity\Season;
 use App\Services\SlugifyService;
@@ -166,15 +167,34 @@ class WildController extends AbstractController
                 'No season with '.$id.' number, found in season\'s table.'
             );
         }
-        $program = $season->getProgram();
-        $episodes = $season->getEpisodes();
+
+        $slug = SlugifyService::slugify($season->getProgram()->getTitle());
 
         return $this->render('wild/showBySeason.html.twig',
             [
                 'season' => $season,
-                'episodes' => $episodes,
-                'program' => $program,
+                'slug' => $slug,
             ]
         );
+    }
+
+    /**
+     * @param integer $id
+     * @Route("/showEpisode/{id<\d+>}", name="showEpisode")
+     */
+    public function showEpisode(Episode $episode):Response
+    {
+        $season = $episode->getSeason();
+        $program = $season->getProgram();
+
+        $slug = SlugifyService::slugify($program->getTitle());
+
+        return $this->render('wild/showEpisode.html.twig',
+        [
+            'episode' => $episode,
+            'program' => $program,
+            'season' => $season,
+            'slug' => $slug,
+        ]);
     }
 }

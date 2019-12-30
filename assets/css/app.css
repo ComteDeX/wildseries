@@ -9884,11 +9884,15 @@ body {
 h1, h2, h3 {
   font-family: "Calistoga", cursive;
 }
-h1 > a, h2 > a, h3 > a {
+
+nav > h1, nav h2, nav h3 {
+  font-family: "Calistoga", cursive;
+}
+nav > h1 > a, nav h2 > a, nav h3 > a {
   color: white;
   text-decoration: none;
 }
-h1 > a:hover, h2 > a:hover, h3 > a:hover {
+nav > h1 > a:hover, nav h2 > a:hover, nav h3 > a:hover {
   color: white;
   text-decoration: underline;
 }

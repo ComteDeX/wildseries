@@ -20,15 +20,20 @@ body {
 
 h1, h2, h3 {
     font-family: 'Calistoga', cursive;
-    > a {
-        color : white;
-        text-decoration: none;
-        &:hover {
+}
+
+nav {
+    > h1, h2, h3 {
+        font-family: 'Calistoga', cursive;
+        > a {
             color : white;
-            text-decoration: underline;
+            text-decoration: none;
+            &:hover {
+                color : white;
+                text-decoration: underline;
+            }
         }
     }
-
 }
 
 h4, h5, h6 {
