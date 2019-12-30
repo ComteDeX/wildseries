@@ -3,6 +3,7 @@
 $primary : #0D99CE;
 $secondary: #FF8806;
 
+@import url('https://fonts.googleapis.com/css?family=Calistoga|Overpass&display=swap');
 // the ~ allows you to reference things in node_modules
 @import "../../node_modules/bootstrap/scss/bootstrap";
 
@@ -13,10 +14,37 @@ $theme-colors: (
 );
 
 body {
-    background-color: get($theme-colors, "primary");
+    background-color: white;
+    font-family: 'Overpass', sans-serif;
 }
 
+h1, h2, h3 {
+    font-family: 'Calistoga', cursive;
+    > a {
+        color : white;
+        text-decoration: none;
+        &:hover {
+            color : white;
+            text-decoration: underline;
+        }
+    }
+
+}
+
+h4, h5, h6 {
+    font-family: 'Overpass', sans-serif;
+}
+
+a {
+    color : $secondary;
+    text-decoration: none;
+    &:hover {
+        color : $secondary;
+        text-decoration: underline;
+    }
+}
 
 .thumbnail {
-    height: 150px;
+    height: 300px;
+    border-radius: 10px;
 }

@@ -3,16 +3,33 @@
 {% block title %}All programs{% endblock %}
 
 {% block body %}
-    <h1>Toutes les séries de la table program : </h1>
+<div class="container justify-content-center">
+    <h1 class="col-12 text-center">Toutes les séries</h1>
+    <div class="justify-content-start row">
+
     {% for program in programs %}
-        <div>
-            <h2>{{ loop.index }} / {{ program.title }} - Catégorie : {{ program.category.name }}</h2>
-            <p>{{ program.summary }}</p>
+        <div class="card col-md-3 col-12 my-2">
+            <a href="{{ path('wild_showByProgram', {'slug' : slugs[loop.index0]}) }}">
+                <img src="{{ program.poster }}" class="card-img-top" alt="Affiche de la série {{ program.title }}">
+            </a>
+            <div class="card-body">
+                <h4 class="card-title">{{ program.title }}</h4>
+                <h6 class="card-title">
+                    <a href="{{ path('wild_showByCategory' , {'categoryName' : program.category.name })}}">
+                    {{ program.category.name }}
+                    </a>
+                </h6>
+                <p class="card-text">{{ program.summary|length > 150 ? program.summary|slice(0, 150) ~ '…' : program.summary  }}
+                    <a href="{{ path('wild_showByProgram', {'slug' : slugs[loop.index0]}) }}"><i>En savoir plus…</i></a>
+                </p>
+            </div>
         </div>
     {% else %}
         Aucune série trouvée.
     {% endfor %}
-    <a href="{{ path('app_index') }}">
+</div>
+    <a href="{{ path('wild_index') }}">
         Retour à l'accueil
     </a>
+</div>
 {% endblock %}
