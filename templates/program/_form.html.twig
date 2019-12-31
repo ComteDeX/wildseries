@@ -3,11 +3,16 @@
     {{ form_widget(form.title, { 'attr': {'class': 'form-control'} }) }}
     {{ form_label(form.summary, 'Résumé') }}
     {{ form_widget(form.summary, { 'attr': {'class': 'form-control'} }) }}
+    {% if program.poster %}
     <div class="text-left"><img src="{{ program.poster }}" class="mt-2 smthumbnail"></div>
+    {% endif %}
     {{ form_label(form.poster, 'Image') }}
     {{ form_widget(form.poster, { 'attr': {'class': 'form-control'} }) }}
     {{ form_label(form.category, 'Catégory') }}
     {{ form_widget(form.category, { 'attr': {'class': 'form-control'} }) }}
+    {{ form_label(form.actors, 'Acteurs') }}
+    {{ form_widget(form.actors, { 'attr': {'class': 'form-control column'} }) }}
+
     <div class="text-center mt-2">
         <button class="btn btn-primary">{{ button_label|default('Save') }}</button>
     </div>

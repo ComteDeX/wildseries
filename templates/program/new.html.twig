@@ -3,9 +3,12 @@
 {% block title %}New Program{% endblock %}
 
 {% block body %}
-    <h1>Create new Program</h1>
+    <div class="container">
+        <h1>Create new Program</h1>
 
-    {{ include('program/_form.html.twig') }}
-
-    <a href="{{ path('program_index') }}">back to list</a>
+        {{ include('program/_form.html.twig') }}
+        <div class="text-center mt-2">
+            <a href="{{ path('program_index') }}" class="btn btn-secondary btnlnk">Annuler</a>
+        </div>
+    </div>
 {% endblock %}

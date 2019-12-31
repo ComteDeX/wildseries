@@ -22,7 +22,7 @@
     {% endfor %}
     </div>
 
-    <a href="{{ path('actor_edit', {'id': actor.id}) }}" class="btn btn-secondary">edit</a>
+    <a href="{{ path('actor_edit', {'id': actor.id}) }}" class="btn btn-secondary btnlnk">Modifier</a>
 
     {{ include('actor/_delete_form.html.twig') }}
     <a href="{{ path('actor_index') }}">Retour à la liste des acteurs</a>
