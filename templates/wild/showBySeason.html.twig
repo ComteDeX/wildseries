@@ -21,7 +21,7 @@
             {% for episode in season.episodes %}
                 <div>
                     <h4>
-                        <a href="{{ path('wild_showEpisode', {'id' : episode.id }) }}">
+                        <a href="{{ path('wild_showEpisode', {'slug': episode.slug}) }}">
                         S{{ season.number }}E{{ episode.number }} - {{ episode.title }}
                         </a>
                     </h4>

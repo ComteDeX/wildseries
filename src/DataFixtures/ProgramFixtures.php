@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Program;
+use App\Services\SlugifyService;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
@@ -23,7 +24,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         ],
         'American Horror Story' => [
             'summary' => 'A chaque saison, son histoire. American Horror Story nous embarque dans des récits à la fois poignants et cauchemardesques, mêlant la peur, le gore et le politiquement correct.',
-            'poster' => 'https://m.media-amazon.com/images/M/MV5BNmE5MDE0ZmMtY2I5Mi00Y2RjLWJlYjMtODkxODQ5OWY1ODdkXkEyXkFqcGdeQXVyNjU2NjA5NjM@._V1_SY1000_CR0,0,695,1000_AL_.jpg',
+            'poster' => 'https://m.media-amazon.com/images/M/MV5BODZlYzc2ODYtYmQyZS00ZTM4LTk4ZDQtMTMyZDdhMDgzZTU0XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg',
             'category' => 'categorie_4',
         ],
         'Love Death And Robots' => [
@@ -33,7 +34,7 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
         ],
         'Penny Dreadful' => [
             'summary' => 'Dans le Londres ancien, Vanessa Ives, une jeune femme puissante aux pouvoirs hypnotiques, allie ses forces à celles de Ethan, un garçon rebelle et violent aux allures de cowboy, et de Sir Malcolm, un vieil homme riche aux ressources inépuisables. Ensemble, ils combattent un ennemi inconnu, presque invisible, qui ne semble pas humain et qui massacre la population.',
-            'poster' => 'https://m.media-amazon.com/images/M/MV5BODZlYzc2ODYtYmQyZS00ZTM4LTk4ZDQtMTMyZDdhMDgzZTU0XkEyXkFqcGdeQXVyMzQ2MDI5NjU@._V1_SY1000_CR0,0,666,1000_AL_.jpg',
+            'poster' => 'https://m.media-amazon.com/images/M/MV5BNmE5MDE0ZmMtY2I5Mi00Y2RjLWJlYjMtODkxODQ5OWY1ODdkXkEyXkFqcGdeQXVyNjU2NjA5NjM@._V1_SY1000_CR0,0,695,1000_AL_.jpg',
             'category' => 'categorie_4',
         ],
         'Fear The Walking Dead' => [
@@ -51,6 +52,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setTitle($title);
             $program->setSummary($data['summary']);
             $program->setPoster($data['poster']);
+            $program->setSlug(SlugifyService::generate($title));
+
             $manager->persist($program);
             $this->addReference('program_'. $i, $program);
             $i++;
@@ -63,6 +66,8 @@ class ProgramFixtures extends Fixture implements DependentFixtureInterface
             $program->setTitle($faker->words($nb = 3, $asText = true));
             $program->setSummary($faker->paragraph($nbSentences = rand(0, 4)+2, $variableNbSentences = true));
             $program->setPoster( 'https://via.placeholder.com/674x1000/333333/FFFFFF/?text='.$program->getTitle());
+            $program->setSlug(SlugifyService::generate($program->getTitle()));
+
             $manager->persist($program);
             $this->addReference('program_'. $j, $program);
 

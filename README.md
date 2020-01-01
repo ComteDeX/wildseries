@@ -13,3 +13,5 @@ Quête n°13 : [lien vidéo](https://www.loom.com/share/1a89e47bc727496399eaace8
 Quête n°14 : [lien vidéo](https://www.loom.com/share/664b6835e8c64c438f62e93f1e211366)
 
 Quête n°15 : [lien vidéo](https://www.loom.com/share/282e2be956214f46a4df5acbff14f546)
+
+Quête n°16 : [lien vidéo](https://www.loom.com/share/6f4721eea3e24a5ca4b89f5dd0b7610c)

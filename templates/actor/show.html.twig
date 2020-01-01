@@ -9,12 +9,12 @@
     <div class="row">
    {% for program in actor.programs %}
         <div class="card col-2">
-            <a href="{{ path('program_show', {'id': program.id}) }}">
+            <a href="{{ path('program_show', {'slug': program.slug}) }}">
                 <img src="{{ program.poster }}" class="card-img-top">
             </a>
             <div class="card-body">
             <h5 class="card-title">{{ program.title }}</h5>
-            <a href="{{ path('program_show', {'id': program.id}) }}" class="btn btn-primary">Plus d’infos</a>
+            <a href="{{ path('program_show', {'slug': program.slug}) }}" class="btn btn-primary">Plus d’infos</a>
             </div>
         </div>
     {% else %}
@@ -22,7 +22,7 @@
     {% endfor %}
     </div>
 
-    <a href="{{ path('actor_edit', {'id': actor.id}) }}" class="btn btn-secondary btnlnk">Modifier</a>
+    <a href="{{ path('actor_edit', {'slug': actor.slug}) }}" class="btn btn-secondary btnlnk">Modifier</a>
 
     {{ include('actor/_delete_form.html.twig') }}
     <a href="{{ path('actor_index') }}">Retour à la liste des acteurs</a>

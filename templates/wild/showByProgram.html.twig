@@ -24,7 +24,7 @@
                 Acteurs :
                 {% for actor in program.actors %}
                     <div>
-                        <a href="{{ path('actor_show', {'id' : actor.id}) }}">
+                        <a href="{{ path('actor_show', {'slug' : actor.slug}) }}">
                             {{ actor.name }}
                         </a>
                     </div>

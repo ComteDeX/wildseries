@@ -2,6 +2,22 @@
 namespace App\Services;
 class SlugifyService
 {
+    public static function generate(string $input) : string
+    {
+        $slug = preg_replace(
+            '/[^\w]/',
+            '-', strtolower(trim(strip_tags($input)))
+        );
+
+        $slug = preg_replace('/-{2,}/','-',$slug);
+
+        return $slug;
+    }
+//[   #Character block start.
+//^   #Not these characters (letters, numbers).
+//\w  #Word characters.
+//\s  #Space characters.
+//]   #Character block end.
     public static function unslugify($slug):string
     {
         $slug = preg_replace(
