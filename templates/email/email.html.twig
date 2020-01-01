@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8">
+        <style type="text/css">
+            @import url('https://fonts.googleapis.com/css?family=Calistoga|Overpass:600&display=swap');
+
+            h1, h2, h3 {
+                font-family: 'Calistoga', cursive;
+            }
+
+            h1, h2, h3, h4, h5, h6 {
+                margin-top: 0;
+                margin-bottom: 0.5rem;
+            }
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            h3 {
+                font-size: 1.75rem;
+            }
+
+            p {
+                font-font: 'Overpass', sans-serif;
+                margin-top: 0;
+                margin-bottom: 1rem;
+            }
+
+        </style>
+        <title>{% block title %}Welcome!{% endblock %}</title>
+    </head>
+    <body style="min-width: 450px; max-width: 768px;">
+        <div class="container">
+            <div style="background-color: #0D99CE; color:white;">
+                <h1 style="font-family: 'Calistoga', sans-serif;">Wild Séries</h1>
+            </div>
+            <div class="nav">
+                <h3 style="font-family: 'Calistoga', sans-serif;">La série {{ program }} a été créée !</h3>
+                <p style="font-family: 'Overpass', sans-serif;">Vous recevez cet email en tant qu’administrateur du site Wild-Séries pour vous prévenir de la création
+                d’une nouvelle série dans la base de données.</p>
+            </div>
+        </div>
+    </body>
+</html>
